@@ -23,7 +23,7 @@ public class SwaggerConfig {
     @Bean
     public Docket newsApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("compactdiscs")
+                .groupName("stocks") //changed from compactdiscs to stocks
                 .apiInfo(apiInfo())
                 .select()
                 .paths(PathSelectors.any())

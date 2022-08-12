@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CompactDiscRepository extends JpaRepository<CompactDisc, Integer> {
+public interface AssetRepository extends JpaRepository<Asset, Integer> {
 
-	public Iterable<CompactDisc> findByArtist(String artist);
+    //public Iterable<Stock> findBySymbol(String sym);
 }
