@@ -38,12 +38,8 @@ public class Asset implements Serializable {
     @Column(name="low")
     private int Low;
     //Methods
-    @Column(name="Type")
-    private enum AssetType {
-        STOCK,
-        CASH,
-        BOND;
-    }
+    @Column(name="type")
+    private String AssetType;
 
     public Integer getAssetID() {
         return this.AssetID;
@@ -63,7 +59,7 @@ public class Asset implements Serializable {
     }
 
     public long getMarketValue() {
-        return this.MarketCap;
+        return this.MarketValue;
     }
 
     public void setMarketValue(long marketCap) {
@@ -99,7 +95,7 @@ public class Asset implements Serializable {
        return Name;
     }
 
-    public setName(String name)
+    public void setName(String name)
     {
         this.Name = name;
     }
@@ -109,19 +105,18 @@ public class Asset implements Serializable {
         return this.Symbol;
     }
 
-    public setSymbol(String sym)
-    {
+    public void setSymbol(String sym) {
         this.Symbol = sym;
     }
 
-    public enum getAssetType()
+    public String getAssetType()
     {
         return this.AssetType;
     }
 
-    public setAssetType()
+    public void setAssetType(String assetType)
     {
-        return this.AssetType();
+        this.AssetType = assetType;
     }
 
 
@@ -131,15 +126,15 @@ public class Asset implements Serializable {
     //constructors
     public Asset(){}
 
-    public Asset(int assetID, String name, String symbol, int currentPrice, long marketCap, double yield,
-                 enum assetType, int high, int low){
+    public Asset(int assetID, String name, String symbol, int currentPrice, long marketCap, float yield,
+                 String assetType, int high, int low){
         this.AssetID = assetID;
         this.Name=name;
         this.Symbol = symbol;
-        this.CurrentPricePrice = currentPrice;
-        this.MarketVolume = marketCap;
+        this.CurrentPrice = currentPrice;
+        this.MarketValue = marketCap;
         this.Yield = yield;
-        this.Type = assetType;
+        this.AssetType = assetType;
         this.High = high;
         this.Low = low;
     }

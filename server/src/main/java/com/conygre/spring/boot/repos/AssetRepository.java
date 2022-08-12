@@ -1,6 +1,6 @@
 package com.conygre.spring.boot.repos;
 
-import com.conygre.spring.boot.entities.CompactDisc;
+import com.conygre.spring.boot.entities.Asset;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

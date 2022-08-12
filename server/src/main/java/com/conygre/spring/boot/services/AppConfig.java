@@ -1,4 +1,4 @@
-package com.conygre.spring.boot;
+package com.conygre.spring.boot.services;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

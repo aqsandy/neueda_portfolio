@@ -1,7 +1,8 @@
 package com.conygre.spring.boot.rest;
 
-import com.conygre.spring.boot.services.CompactDiscService;
-import com.conygre.spring.boot.entities.CompactDisc;
+import com.conygre.spring.boot.entities.Asset;
+import com.conygre.spring.boot.services.AssetService;
+import com.conygre.spring.boot.entities.Asset;
 import io.swagger.annotations.ApiOperation;
 //import org.apache.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
@@ -18,7 +19,7 @@ import java.util.Collection;
 @CrossOrigin // allows requests from all domains
 public class AssetController {
 
-    private static Logger logger = LogManager.getLogger(StockController.class);
+    private static Logger logger = LogManager.getLogger(AssetController.class);
 
     @Autowired
     private AssetService service;

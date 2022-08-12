@@ -1,4 +1,4 @@
-package com.conygre.spring.boot;
+package com.conygre.spring.boot.services;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
@@ -23,7 +23,7 @@ public class SwaggerConfig {
     @Bean
     public Docket newsApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("stocks") //changed from compactdiscs to stocks
+                .groupName("managementPortfolio")
                 .apiInfo(apiInfo())
                 .select()
                 .paths(PathSelectors.any())
