@@ -14,22 +14,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 
 @RestController
-@RequestMapping("/api/tradestocks") //changed from /trade to /tradestocks
+@RequestMapping("/api/trade")
 @CrossOrigin // allows requests from all domains
-public class Assetontroller {
+public class AssetController {
 
     private static Logger logger = LogManager.getLogger(StockController.class);
 
     @Autowired
-    private StockService service;
+    private AssetService service;
 
-   /* @ApiOperation(value = "findAll", nickname = "findAll")
-    @RequestMapping(method = RequestMethod.GET)
-    public Iterable<CompactDisc> findAll() {
+    @ApiOperation(value = "findAll", nickname = "findAll")
+    @RequestMapping(method = RequestMethod.GET, value ="/AssetExchange")
+    public Iterable<Asset> findAll() {
         logger.info("managed to call a Get request for findAll");
-        return service.getCatalog();
+        return service.getName();
     }
-
+  /*
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public CompactDisc getCdById(@PathVariable("id") int id) {
         return service.getCompactDiscById(id);
@@ -62,10 +62,5 @@ public class Assetontroller {
         service.addNewCompactDisc(disc);
     }
     */
-
-    /*@RequestMapping(method = RequestMethod.GET, value ="/{id}")
-    public void displayStock(@PathVariable("id") int id) {
-        return service.getStockByID(id); */
-    }
 
 }
