@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 
 @RestController
-@RequestMapping("/api/compactdiscs")
+@RequestMapping("/api/trade")
 @CrossOrigin // allows requests from all domains
 public class CompactDiscController {
 
