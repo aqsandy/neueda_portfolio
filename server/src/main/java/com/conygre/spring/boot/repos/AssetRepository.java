@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AssetRepository extends JpaRepository<Asset, Integer> {
 
-    //public Iterable<Stock> findBySymbol(String sym);
+    public Iterable<Asset> findBySymbol(String sym);
 }
