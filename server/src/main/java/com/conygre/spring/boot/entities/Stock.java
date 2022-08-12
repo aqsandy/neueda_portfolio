@@ -12,6 +12,8 @@ import java.io.Serializable;
 
 //Adding caching
 //@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
+
+
 @Entity @Table(name="Stocks")
 public class Stock implements Serializable {
 
@@ -22,7 +24,6 @@ public class Stock implements Serializable {
   @Id
   @GeneratedValue(strategy=GenerationType.IDENTITY)
   @Column(name="StockID") private Integer StockID;
-
   @Column(name="ExchangeName") private String ExchangeName;
   @Column(name="ask_price") private int AskPrice;
   @Column(name="market_cap") private long MarketCap;
@@ -31,7 +32,69 @@ public class Stock implements Serializable {
   @Column(name="high") private int high;
   @Column(name="low") private int low;
   //Methods
+  public Integer getStockID() {
+    return StockID;
+  }
 
+  public void setStockID(Integer stockID) {
+    StockID = stockID;
+  }
+
+  public String getExchangeName() {
+    return ExchangeName;
+  }
+
+  public void setExchangeName(String exchangeName) {
+    ExchangeName = exchangeName;
+  }
+
+  public int getAskPrice() {
+    return AskPrice;
+  }
+
+  public void setAskPrice(int askPrice) {
+    AskPrice = askPrice;
+  }
+
+  public long getMarketCap() {
+    return MarketCap;
+  }
+
+  public void setMarketCap(long marketCap) {
+    MarketCap = marketCap;
+  }
+
+  public double getYield() {
+    return Yield;
+  }
+
+  public void setYield(double yield) {
+    Yield = yield;
+  }
+
+  public long getAverage_volume() {
+    return average_volume;
+  }
+
+  public void setAverage_volume(long average_volume) {
+    this.average_volume = average_volume;
+  }
+
+  public int getHigh() {
+    return high;
+  }
+
+  public void setHigh(int high) {
+    this.high = high;
+  }
+
+  public int getLow() {
+    return low;
+  }
+
+  public void setLow(int low) {
+    this.low = low;
+  }
 
 
   //constructors
@@ -48,38 +111,5 @@ public class Stock implements Serializable {
     this.average_volume = average_volume;
     this.high = high;
     this.low = low;
-  }
-
-
-  public int getStockID() {
-    return StockID;
-  }
-
-  public String getSymbol(int StockID) {return symbol;}
-  public String getExchangeName() {
-    return ExchangeName;
-  }
-  public int getAskPrice() {
-    return AskPrice;
-  }
-
-  public long getMarketCap() {
-    return MarketCap;
-  }
-
-  public double getYield() {
-    return Yield;
-  }
-
-  public long getAverage_volume() {
-    return average_volume;
-  }
-
-  public int getHigh() {
-    return high;
-  }
-
-  public int getLow() {
-    return low;
   }
 }
