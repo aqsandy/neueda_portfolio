@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping(path="/trade")
+@RequestMapping(path="/tradeOrder")
 public class TradeController {
      @Autowired
      private TradeRepository tradeRepository;

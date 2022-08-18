@@ -25,9 +25,9 @@ public class TradeOrder implements Serializable {
     private int netAmount;
 
     @Column(name="order_ticker")
-    private long orderTicker;
+    private String orderTicker;
 
-    public TradeOrder(Integer orderid, String orderDate, String orderType, int numShares, int netAmount, long orderTicker) {
+    public TradeOrder(Integer orderid, String orderDate, String orderType, int numShares, int netAmount, String orderTicker) {
         this.orderid = orderid;
         this.orderDate = orderDate;
         this.orderType = orderType;
@@ -38,11 +38,11 @@ public class TradeOrder implements Serializable {
 
     public TradeOrder() {};
 
-    public long getOrderTicker() {
+    public String getOrderTicker() {
         return orderTicker;
     }
 
-    public void setOrderTicker(long orderTicker) {
+    public void setOrderTicker(String orderTicker) {
         this.orderTicker = orderTicker;
     }
 
