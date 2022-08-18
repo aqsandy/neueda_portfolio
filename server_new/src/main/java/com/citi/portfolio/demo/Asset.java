@@ -1,100 +1,122 @@
 package com.citi.portfolio.demo;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
-@Entity @Table(name="Asset")
-
-public class Asset {
+@Entity
+@Table(name="asset")
+public class Asset implements Serializable {
 
     @Column(name="symbol")
-    private String Symbol;
+    private String symbol;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="aid")
-    private Integer AssetID;
+    private Integer aid;
     @Column(name="name")
-    private String Name;
+    private String name;
     @Column(name="current_price")
-    private int CurrentPrice;
+    private int current_price;
     @Column(name="market_value")
-    private long MarketValue;
+    private long market_value;
+
     @Column(name="yield_percent")
-    private float Yield;
+    private float yield_percent;
+
     @Column(name="high")
-    private int High;
+    private int high;
+
     @Column(name="low")
-    private int Low;
+    private int low;
     //Methods
+
     @Column(name="type")
-    private String AssetType;
+    private String type;
 
-    public Asset(String symbol, Integer assetID, String name, int currentPrice, long marketValue, float yield, int high, int low, String assetType) {
-        Symbol = symbol;
-        AssetID = assetID;
-        Name = name;
-        CurrentPrice = currentPrice;
-        MarketValue = marketValue;
-        Yield = yield;
-        High = high;
-        Low = low;
-        AssetType = assetType;
+    public Asset() {};
+
+    public Asset(String symbol, Integer aid, String name, int current_price, long market_value, float yield_percent, int high, int low, String type) {
+        this.symbol = symbol;
+        this.aid = aid;
+        this.name = name;
+        this.current_price = current_price;
+        this.market_value = market_value;
+        this.yield_percent = yield_percent;
+        this.high = high;
+        this.low = low;
+        this.type = type;
     }
 
-
-    public String getSymbol() {
-        return Symbol;
+    public String getType() {
+        return type;
     }
 
-    public void setSymbol(String symbol) {
-        Symbol = symbol;
-    }
-
-    public Integer getAssetID() {
-        return AssetID;
-    }
-
-    public void setAssetID(Integer assetID) {
-        AssetID = assetID;
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
-    }
-
-    public float getYield() {
-        return Yield;
-    }
-
-    public void setYield(float yield) {
-        Yield = yield;
-    }
-
-    public int getHigh() {
-        return High;
-    }
-
-    public void setHigh(int high) {
-        High = high;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public int getLow() {
-        return Low;
+        return low;
     }
 
     public void setLow(int low) {
-        Low = low;
+        this.low = low;
     }
 
-    public String getAssetType() {
-        return AssetType;
+    public int getHigh() {
+        return high;
     }
 
-    public void setAssetType(String assetType) {
-        AssetType = assetType;
+    public void setHigh(int high) {
+        this.high = high;
+    }
+
+    public float getYield_percent() {
+        return yield_percent;
+    }
+
+    public void setYield_percent(float yield_percent) {
+        this.yield_percent = yield_percent;
+    }
+
+    public long getMarket_value() {
+        return market_value;
+    }
+
+    public void setMarket_value(long market_value) {
+        this.market_value = market_value;
+    }
+
+    public int getCurrent_price() {
+        return current_price;
+    }
+
+    public void setCurrent_price(int current_price) {
+        this.current_price = current_price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAid() {
+        return aid;
+    }
+
+    public void setAid(Integer aid) {
+        this.aid = aid;
+    }
+
+    public String getSymbol() {
+        return symbol;
+    }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
     }
 }
