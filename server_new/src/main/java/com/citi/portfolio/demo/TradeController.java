@@ -14,7 +14,7 @@ public class TradeController {
 
     @GetMapping(path="/all")
     public @ResponseBody Iterable<Asset> getAllAssets() {
-        // This returns a JSON or XML with the users
+        // This returns a JSON or XML with the assets
         return assetRepository.findAll();
     }
 
