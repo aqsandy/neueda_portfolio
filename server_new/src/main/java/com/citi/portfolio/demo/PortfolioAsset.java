@@ -1,9 +1,7 @@
 package com.citi.portfolio.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 @Entity
 public class PortfolioAsset {
     @Id
@@ -14,11 +12,11 @@ public class PortfolioAsset {
 
     private Integer aid;
 
-    private Float buyprice;
+    private Float buy_price;
 
     private Integer shares;
 
-    private Float totalcost;
+    private Float total_cost;
 
 
     public Integer getProduct_id() {
@@ -45,13 +43,7 @@ public class PortfolioAsset {
         this.aid = aid;
     }
 
-    public Float getBuyprice() {
-        return buyprice;
-    }
 
-    public void setBuyprice(Float buyprice) {
-        this.buyprice = buyprice;
-    }
 
     public Integer getShares() {
         return shares;
@@ -61,11 +53,19 @@ public class PortfolioAsset {
         this.shares = shares;
     }
 
-    public Float getTotalcost() {
-        return totalcost;
+    public Float getBuy_price() {
+        return buy_price;
     }
 
-    public void setTotalcost(Float totalcost) {
-        this.totalcost = totalcost;
+    public void setBuy_price(Float buy_price) {
+        this.buy_price = buy_price;
+    }
+
+    public Float getTotal_cost() {
+        return total_cost;
+    }
+
+    public void setTotal_cost(Float total_cost) {
+        this.total_cost = total_cost;
     }
 }

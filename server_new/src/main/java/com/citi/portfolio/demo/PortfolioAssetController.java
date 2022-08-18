@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping(path="/portfolio_asset")
+@RequestMapping(path="/PortfolioAsset")
 public class PortfolioAssetController {
     @Autowired
     private PortfolioAssetRepository portfolioAssetRepository;
@@ -20,10 +20,10 @@ public class PortfolioAssetController {
         PortfolioAsset asset = new PortfolioAsset();
         asset.setPid(pid);
         asset.setAid(aid);
-        asset.setBuyprice(buy_price);
+        asset.setBuy_price(buy_price);
         asset.setShares(shares);
         Float total_cost = buy_price * shares;
-        asset.setTotalcost(total_cost);
+        asset.setTotal_cost(total_cost);
         responseBody.put("status","OK");
         String responseString = (new JSONObject(responseBody)).toString(2);
         return responseString;
