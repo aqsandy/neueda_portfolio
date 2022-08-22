@@ -38,7 +38,7 @@ public class TradeController {
 
 
     @RequestMapping(method = RequestMethod.GET, value = "/order/{ticker}")
-    public ResponseEntity<Object> getAssetBySymbol(@PathVariable("ticker") String ticker) {
+    public ResponseEntity<Object> getTradeBySymbol(@PathVariable("ticker") String ticker) {
         try {
             Iterable<TradeOrder> result = tradeService.getTradeOrdersByTicker(ticker);
             return ResponseHandler.generateResponse("Successfully retrieved data!", HttpStatus.OK, result);
