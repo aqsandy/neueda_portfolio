@@ -15,8 +15,8 @@ public class PortfolioAssetController {
     private PortfolioAssetRepository portfolioAssetRepository;
 
     @PostMapping(path = "/add")
-    ResponseEntity<String> add_asset(@RequestParam Integer pid, @RequestParam Integer aid,
-                                                  @RequestParam Float buy_price, @RequestParam Integer shares){
+    ResponseEntity<String> add_asset(@RequestBody(required=true) int pid, @RequestBody(required=true) int aid,
+                                                  @RequestBody(required=true) float buy_price, @RequestBody(required=true) int shares){
         Map<String, Object> responseBody = new HashMap<String, Object>();
         PortfolioAsset asset = new PortfolioAsset();
         try {
@@ -24,7 +24,7 @@ public class PortfolioAssetController {
             asset.setAid(aid);
             asset.setBuy_price(buy_price);
             asset.setShares(shares);
-            Float total_cost = buy_price * shares;
+            float total_cost = buy_price * shares;
             asset.setTotal_cost(total_cost);
             portfolioAssetRepository.save(asset);
         }catch(Exception e) {
@@ -40,8 +40,8 @@ public class PortfolioAssetController {
     public @ResponseBody Iterable<PortfolioAsset> getAllAssets() {
         return portfolioAssetRepository.findAll();
     }
-    @PostMapping(path = "/delete")
-    ResponseEntity<String> delete_asset(@RequestParam Integer product_id){
+    @DeleteMapping(path = "/delete")
+    ResponseEntity<String> delete_asset(@RequestBody(required=true) int product_id){
         Map<String, Object> responseBody = new HashMap<String, Object>();
         PortfolioAsset asset = new PortfolioAsset();
         asset.setProduct_id(product_id);

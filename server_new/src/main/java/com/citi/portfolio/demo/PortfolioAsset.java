@@ -6,66 +6,66 @@ import javax.persistence.*;
 public class PortfolioAsset {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer product_id;
+    private int product_id;
 
-    private Integer pid;
+    private int pid;
 
-    private Integer aid;
+    private int aid;
 
-    private Float buy_price;
+    private float buy_price;
 
-    private Integer shares;
+    private int shares;
 
-    private Float total_cost;
+    private float total_cost;
 
 
-    public Integer getProduct_id() {
+    public int getProduct_id() {
         return product_id;
     }
 
-    public void setProduct_id(Integer product_id) {
+    public void setProduct_id(int product_id) {
         this.product_id = product_id;
     }
 
-    public Integer getPid() {
+    public int getPid() {
         return pid;
     }
 
-    public void setPid(Integer pid) {
+    public void setPid(int pid) {
         this.pid = pid;
     }
 
-    public Integer getAid() {
+    public int getAid() {
         return aid;
     }
 
-    public void setAid(Integer aid) {
+    public void setAid(int aid) {
         this.aid = aid;
     }
 
 
 
-    public Integer getShares() {
+    public int getShares() {
         return shares;
     }
 
-    public void setShares(Integer shares) {
+    public void setShares(int shares) {
         this.shares = shares;
     }
 
-    public Float getBuy_price() {
+    public float getBuy_price() {
         return buy_price;
     }
 
-    public void setBuy_price(Float buy_price) {
+    public void setBuy_price(float buy_price) {
         this.buy_price = buy_price;
     }
 
-    public Float getTotal_cost() {
+    public float getTotal_cost() {
         return total_cost;
     }
 
-    public void setTotal_cost(Float total_cost) {
+    public void setTotal_cost(float total_cost) {
         this.total_cost = total_cost;
     }
 }
