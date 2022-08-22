@@ -1,4 +1,6 @@
-package com.citi.portfolio.demo;
+package com.citi.portfolio.demo.services;
+
+import com.citi.portfolio.demo.entities.Asset;
 
 public interface AssetService {
 

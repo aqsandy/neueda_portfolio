@@ -1,7 +1,7 @@
-package com.citi.portfolio.demo;
+package com.citi.portfolio.demo.repos;
 
+import com.citi.portfolio.demo.entities.Asset;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.web.bind.annotation.RequestParam;
 
 public interface AssetRepository extends CrudRepository<Asset,Integer>{
 
