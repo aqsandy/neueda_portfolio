@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 public class PortfolioAsset {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int product_id;
 
     private int pid;

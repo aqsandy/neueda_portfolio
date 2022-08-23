@@ -1,31 +1,27 @@
 package com.citi.portfolio.demo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.json.*;
+import org.springframework.web.context.request.WebRequest;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Controller
+@RestController
 @RequestMapping(path="/PortfolioAsset")
+@CrossOrigin
 public class PortfolioAssetController {
     @Autowired
     private PortfolioAssetRepository portfolioAssetRepository;
-
     @PostMapping(path = "/add")
-    ResponseEntity<String> add_asset(@RequestBody(required=true) int pid, @RequestBody(required=true) int aid,
-                                                  @RequestBody(required=true) float buy_price, @RequestBody(required=true) int shares){
+    ResponseEntity<Object> add_asset(@RequestBody PortfolioAsset asset){
         Map<String, Object> responseBody = new HashMap<String, Object>();
-        PortfolioAsset asset = new PortfolioAsset();
         try {
-            asset.setPid(pid);
-            asset.setAid(aid);
-            asset.setBuy_price(buy_price);
-            asset.setShares(shares);
-            float total_cost = buy_price * shares;
-            asset.setTotal_cost(total_cost);
             portfolioAssetRepository.save(asset);
         }catch(Exception e) {
             responseBody.put("status","BAD REQUEST");
@@ -37,8 +33,9 @@ public class PortfolioAssetController {
         return ResponseEntity.accepted().body(responseString);
     }
     @GetMapping(path="/all")
-    public @ResponseBody Iterable<PortfolioAsset> getAllAssets() {
-        return portfolioAssetRepository.findAll();
+    ResponseEntity<Object>  getAllAssets() {
+        Iterable<PortfolioAsset> result = portfolioAssetRepository.findAll();
+        return ResponseHandler.generateResponse("Successfully retrieved data!", HttpStatus.OK, result);
     }
     @DeleteMapping(path = "/delete")
     ResponseEntity<String> delete_asset(@RequestBody(required=true) int product_id){
