@@ -1,4 +1,4 @@
-package com.citi.portfolio.demo;
+package com.citi.portfolio.demo.entities;
 
 import javax.persistence.*;
 
