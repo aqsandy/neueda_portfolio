@@ -57,7 +57,7 @@ public class TradeServiceImpl implements TradeService {
         orderToAdd.setNetAmount(num_shares * assetToAdd.get().getCurrent_price());
         orderToAdd.setStatus_code(0);
         if(assetToAdd.isPresent()) {
-            orderToAdd.setOrderStatus("COMPLETED");
+            orderToAdd.setOrderStatus("IN PROGRESS");
         }
         else {
             orderToAdd.setOrderStatus("NOT COMPLETED");
@@ -84,7 +84,7 @@ public class TradeServiceImpl implements TradeService {
         orderToAdd.setNetAmount(num_shares * assetToAdd.get().getCurrent_price());
         orderToAdd.setStatus_code(0);
         if(assetToAdd.isPresent()) {
-            orderToAdd.setOrderStatus("COMPLETED");
+            orderToAdd.setOrderStatus("IN PROGRESS");
         }
         else {
             orderToAdd.setOrderStatus("NOT COMPLETED");
@@ -95,5 +95,19 @@ public class TradeServiceImpl implements TradeService {
         return orderToAdd;
     }
 
-
+    @Override
+    public void updateTrades(Iterable<TradeOrder> trades) {
+        for(TradeOrder temp: trades)
+        {
+            if(temp.getStatus_code() == 3) {
+                temp.setOrderStatus("FAILED");
+                tradeRepository.save(temp);
+            }
+            else if(temp.getStatus_code() == 2)
+            {
+                temp.setOrderStatus("FAILED");
+                tradeRepository.save(temp);
+            }
+        }
+    }
 }

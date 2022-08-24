@@ -68,13 +68,14 @@ public class TradeController {
             return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
         }
     }
-/*
+
+
     @PutMapping(value = "/update")
         public ResponseEntity<String> updateOrderHistory()
         {
             try {
-                int stepOne = op.findTradesForProcessing();
-                int stepTwo = op.findTradesForFillingOrRejecting();
+                Iterable<TradeOrder> trades = tradeService.getTrades();
+                tradeService.updateTrades(trades);
                 ResponseEntity<String> trades_successfully_updated = new ResponseEntity<>("Trades successfully updated", HttpStatus.OK);
                 return trades_successfully_updated;
             }
@@ -84,7 +85,7 @@ public class TradeController {
         }
 
         }
- */
+
     }
 
 
