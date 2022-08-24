@@ -1,16 +1,16 @@
 version: "3.8"
 
 services:
-  mysql:
-      image: mariadb
-      restart: always
-      environment:
-        MYSQL_ROOT_PASSWORD: c0nygre
-        MYSQL_DATABASE: portfolio_DB
-      expose:
-        - "3306"
-      ports:
-        - "3306:3306"
+  # mysql:
+  #     image: mariadb
+  #     restart: always
+  #     environment:
+  #       MYSQL_ROOT_PASSWORD: c0nygre
+  #       MYSQL_DATABASE: portfolio_DB
+  #     expose:
+  #       - "3306"
+  #     ports:
+  #       - "3306:3306"
   portfolio_backend:
     build: 
       context: ./server_new
@@ -20,3 +20,9 @@ services:
     tty: true
   dummy_trade:
     image: callalyf/dummy-order-filler:0.0.1
+    environment:
+      - DB_NAME=portfolio_DB
+      - DB_TABLE=order_history
+      - DB_HOST=100.42.100.42.65.208
+      - DB_USER=root
+      - DB_PASS=4Dw2^rt2YCe
