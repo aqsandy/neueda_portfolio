@@ -19,7 +19,6 @@ public class PortfolioAssetController {
     private PortfolioAssetRepository portfolioAssetRepository;
     @PostMapping(path = "/add")
     ResponseEntity<Object> add_asset(@RequestBody PortfolioAsset asset){
-        Map<String, Object> responseBody = new HashMap<String, Object>() ;
         try {
             portfolioAssetRepository.save(asset);
         }catch(Exception e) {
