@@ -2,10 +2,8 @@ package com.citi.portfolio.demo.controllers;
 
 import com.citi.portfolio.demo.ResponseHandler;
 import com.citi.portfolio.demo.dto.Trade_DTO;
-import com.citi.portfolio.demo.repos.OrderProcessingSimulator;
 import com.citi.portfolio.demo.services.TradeService;
 import com.citi.portfolio.demo.entities.TradeOrder;
-import com.mysql.cj.x.protobuf.MysqlxDatatypes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +15,6 @@ import org.springframework.web.bind.annotation.*;
 public class TradeController {
     @Autowired
     private TradeService tradeService;
-
-    @Autowired
-    private OrderProcessingSimulator op;
 
     @GetMapping(path = "/all")
     public ResponseEntity<Object> getAllOrders() {
@@ -73,7 +68,7 @@ public class TradeController {
             return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
         }
     }
-
+/*
     @PutMapping(value = "/update")
         public ResponseEntity<String> updateOrderHistory()
         {
@@ -89,6 +84,7 @@ public class TradeController {
         }
 
         }
+ */
     }
 
 
