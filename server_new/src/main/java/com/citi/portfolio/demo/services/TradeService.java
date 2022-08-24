@@ -12,4 +12,6 @@ public interface TradeService {
     TradeOrder buyTradeOrderBySymbol(String symbol, int num_shares);
 
     TradeOrder sellTradeOrderBySymbol(String symbol, int num_shares);
+
+    void updateTrades(Iterable<TradeOrder> trades);
 }
