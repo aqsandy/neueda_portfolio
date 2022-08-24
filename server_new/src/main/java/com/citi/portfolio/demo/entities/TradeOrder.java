@@ -34,6 +34,9 @@ public class TradeOrder implements Serializable {
     @Column(name="purchase_type")
     private String purchaseType;
 
+    @Column(name="status_code")
+    private int status_code;
+
     public TradeOrder() {};
 
     public String getOrderTicker() {
@@ -98,5 +101,13 @@ public class TradeOrder implements Serializable {
 
     public void setPurchaseType(String purchaseType) {
         this.purchaseType = purchaseType;
+    }
+
+    public int getStatus_code() {
+        return status_code;
+    }
+
+    public void setStatus_code(int status_code) {
+        this.status_code = status_code;
     }
 }
