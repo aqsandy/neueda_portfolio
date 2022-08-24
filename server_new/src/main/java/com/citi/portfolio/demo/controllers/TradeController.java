@@ -54,9 +54,9 @@ public class TradeController {
     }
 
     @PostMapping(value = "/buy")
-    public ResponseEntity<Object> buyTradeOrderByTicker(@RequestParam String ticker, @RequestParam int numShares) {
+    public ResponseEntity<Object> buyTradeOrderByTicker(@RequestBody Trade_DTO trade) {
         try {
-            TradeOrder result = tradeService.buyTradeOrderBySymbol(ticker, numShares);
+            TradeOrder result = tradeService.buyTradeOrderBySymbol(trade.getTicker(), trade.getNumShares());
             return ResponseHandler.generateResponse("Successfully added data!", HttpStatus.OK, result);
         } catch (Exception e) {
             return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
@@ -64,9 +64,9 @@ public class TradeController {
     }
 
     @PostMapping(value = "/sell")
-    public ResponseEntity<Object> sellTradeOrderByTicker(@RequestParam String ticker, @RequestParam int numShares) {
+    public ResponseEntity<Object> sellTradeOrderByTicker(@RequestBody Trade_DTO trade) {
         try {
-            TradeOrder result = tradeService.sellTradeOrderBySymbol(ticker, numShares);
+            TradeOrder result = tradeService.sellTradeOrderBySymbol(trade.getTicker(), trade.getNumShares());
             return ResponseHandler.generateResponse("Successfully added data!", HttpStatus.OK, result);
         } catch (Exception e) {
             return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
