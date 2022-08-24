@@ -1,6 +1,7 @@
 package com.citi.portfolio.demo.controllers;
 
 import com.citi.portfolio.demo.ResponseHandler;
+import com.citi.portfolio.demo.dto.Trade_DTO;
 import com.citi.portfolio.demo.repos.OrderProcessingSimulator;
 import com.citi.portfolio.demo.services.TradeService;
 import com.citi.portfolio.demo.entities.TradeOrder;
