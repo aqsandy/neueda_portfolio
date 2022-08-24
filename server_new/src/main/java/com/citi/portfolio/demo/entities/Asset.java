@@ -19,7 +19,7 @@ public class Asset implements Serializable {
     @Column(name="current_price")
     private int current_price;
     @Column(name="market_value")
-    private long market_value;
+    private double market_value;
 
     @Column(name="yield_percent")
     private float yield_percent;
@@ -80,11 +80,11 @@ public class Asset implements Serializable {
         this.yield_percent = yield_percent;
     }
 
-    public long getMarket_value() {
+    public double getMarket_value() {
         return market_value;
     }
 
-    public void setMarket_value(long market_value) {
+    public void setMarket_value(double market_value) {
         this.market_value = market_value;
     }
 
