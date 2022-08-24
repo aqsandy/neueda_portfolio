@@ -55,6 +55,7 @@ public class TradeServiceImpl implements TradeService {
         orderToAdd.setOrderType(assetToAdd.get().getType());
         orderToAdd.setOrderTicker(symbol);
         orderToAdd.setNetAmount(num_shares * assetToAdd.get().getCurrent_price());
+        orderToAdd.setStatus_code(0);
         if(assetToAdd.isPresent()) {
             orderToAdd.setOrderStatus("COMPLETED");
         }

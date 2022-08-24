@@ -1,18 +1,24 @@
 package com.citi.portfolio.demo.controllers;
 
 import com.citi.portfolio.demo.ResponseHandler;
+import com.citi.portfolio.demo.repos.OrderProcessingSimulator;
 import com.citi.portfolio.demo.services.TradeService;
 import com.citi.portfolio.demo.entities.TradeOrder;
+import com.mysql.cj.x.protobuf.MysqlxDatatypes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin
 @RequestMapping(path="/trade")
 public class TradeController {
     @Autowired
     private TradeService tradeService;
+
+    @Autowired
+    private OrderProcessingSimulator op;
 
     @GetMapping(path = "/all")
     public ResponseEntity<Object> getAllOrders() {
@@ -67,5 +73,21 @@ public class TradeController {
         }
     }
 
-}
+    @PutMapping(value = "/update")
+        public ResponseEntity<String> updateOrderHistory()
+        {
+            try {
+                int stepOne = op.findTradesForProcessing();
+                int stepTwo = op.findTradesForFillingOrRejecting();
+                ResponseEntity<String> trades_successfully_updated = new ResponseEntity<>("Trades successfully updated", HttpStatus.OK);
+                return trades_successfully_updated;
+            }
+            catch (Exception e){
+                return new ResponseEntity<>("Trades didn't update sucesfully", HttpStatus.BAD_REQUEST);
+
+        }
+
+        }
+    }
+
 
