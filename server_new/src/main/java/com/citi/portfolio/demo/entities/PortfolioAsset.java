@@ -12,8 +12,6 @@ public class PortfolioAsset {
 
     private int aid;
 
-    private float buy_price;
-
     private int shares;
 
     private float total_cost;
@@ -43,22 +41,12 @@ public class PortfolioAsset {
         this.aid = aid;
     }
 
-
-
     public int getShares() {
         return shares;
     }
 
     public void setShares(int shares) {
         this.shares = shares;
-    }
-
-    public float getBuy_price() {
-        return buy_price;
-    }
-
-    public void setBuy_price(float buy_price) {
-        this.buy_price = buy_price;
     }
 
     public float getTotal_cost() {
