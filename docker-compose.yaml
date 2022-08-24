@@ -18,3 +18,5 @@ services:
       - "8080:8080"
     stdin_open: true
     tty: true
+  dummy_trade:
+    image: callalyf/dummy-order-filler:0.0.1
