@@ -1,16 +1,16 @@
 version: "3.8"
 
 services:
-  # mysqlam:
-  #     image: mysql:5.7
-  #     restart: always
-  #     environment:
-  #       MYSQL_ROOT_PASSWORD: neueda
-  #       MYSQL_DATABASE: portfolio_DB
-  #     expose:
-  #       - "3306"
-  #     ports:
-  #       - "3306:3306"
+  mysql:
+      image: mariadb
+      restart: always
+      environment:
+        MYSQL_ROOT_PASSWORD: c0nygre
+        MYSQL_DATABASE: portfolio_DB
+      expose:
+        - "3306"
+      ports:
+        - "3306:3306"
   portfolio_backend:
     build: 
       context: ./server_new
