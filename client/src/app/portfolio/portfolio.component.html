@@ -130,17 +130,17 @@
                 <div class="row chart-wrapper pb-4">
                     <div class="col-6">
                         <h6 class="text-center">INCOME</h6>
-                        <p class="text-center">$30, 716</p>
                         <canvas baseChart height="200" [data]="incomeChartData" [legend]="chartLegend" [labels]="incomeChartLabels"
                             [chartType]="doughnutChartType" class="px-2 pb-2">
                         </canvas>
+                        <p class="text-center">$30, 716</p>
                     </div>
                     <div class="col-6">
                         <h6 class="text-center">SPENDING</h6>
-                        <p class="text-center">-$23,834</p>
                         <canvas baseChart height="200" [data]="spendingChartData" [legend]="chartLegend" [labels]="spendingChartLabels"
                             [chartType]="doughnutChartType" class="px-2 pb-2">
                         </canvas>
+                        <p class="text-center">-$23,834</p>
                     </div>
                 </div>
             </div>
@@ -189,7 +189,7 @@
                     MARKET ADVICE
                 </h5>
                 <hr class="mx-1 grey-hr">
-                <div *ngFor="let portfolioAsset of portfolioAssets" class="panel-body m-2 pb-1" id="market-advice">
+                <div *ngFor="let portfolioAsset of portfolioAssets" class="panel-body mx-2 pb-0" id="market-advice">
                     <div class="row mx-1 my-2">
                         <div class="col-9 px-0">
                             <p class="list-item" style="font-weight: 500">{{portfolioAsset[0]}}</p>
@@ -201,7 +201,7 @@
                             <p *ngIf="portfolioAsset[4]=='Buy'" class="list-item green-txt">{{portfolioAsset[4]}}</p>
                         </div>
                     </div>
-                    <hr class="mx-1 grey-hr">
+                    <hr class="mx-1" style="background-color: #c7c7c7; height: 1px">
                 </div>
                 <br>
             </div>

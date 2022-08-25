@@ -23,3 +23,13 @@ h2 {
     background-color: #070A1B;
     padding-top: 25px;
 }
+
+.green-txt-dark {
+    color: #275c40 !important;
+    font-weight: 600;
+}
+
+.red-txt-dark {
+    color: #752e2d !important;
+    font-weight: 600;
+}

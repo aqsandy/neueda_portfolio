@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { MinLengthValidator } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap, Params } from '@angular/router'
@@ -58,6 +59,8 @@ export class StockComponent implements OnInit {
   request = new XMLHttpRequest();
 
   isLoaded: boolean = false;
+  transactionSuccess: boolean = false;
+  transactionFailure: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -114,7 +117,7 @@ export class StockComponent implements OnInit {
       console.log(data)
       this.stockMonthlyLabels = []
       this.stockMonthlyData = []
-      for (let item of data){
+      for (let item of data) {
         this.stockMonthlyLabels.push(item.name);
         this.stockMonthlyData.push(item.value.toFixed(2));
       }
@@ -123,7 +126,6 @@ export class StockComponent implements OnInit {
       this.stockWeeklyData = this.stockMonthlyData.slice(-7);
     }
   }
-
 
   onBuyQuantityChange(arg: number) {
     this.buyCost = this.currentPrice * arg
@@ -134,11 +136,12 @@ export class StockComponent implements OnInit {
   }
 
   public confirmBuy() {
-
     var request = new XMLHttpRequest();
+    var successAlert = document.getElementById('successAlert');
 
     request.open('POST', this.apiBuy);
     request.setRequestHeader("Content-Type", "application/json");
+    console.log("HI");
 
     request.onreadystatechange = function () {
       if (request.readyState === 4) {
@@ -146,8 +149,7 @@ export class StockComponent implements OnInit {
         console.log(request.responseText);
       }
     }
-
-    request.send(JSON.stringify({'ticker' : this.stockSymbol, 'numShares': this.buyQuantity}));
+    request.send(JSON.stringify({ 'ticker': this.stockSymbol, 'numShares': this.buyQuantity }));
 
     request.open('PUT', 'http://localhost:8080/PortfolioAsset/modify');
     request.setRequestHeader("Content-Type", "application/json");
@@ -161,12 +163,14 @@ export class StockComponent implements OnInit {
 
     request.send(JSON.stringify({ 'pid': this.portfolioId, 'aid': this.assetId, 'shares': this.buyQuantity, 'total_cost': this.buyCost }));
     let response = JSON.parse(this.request.responseText);
-
+    this.transactionSuccess = true;
+    successAlert!.classList.add('show');
+    successAlert!.classList.remove('invisible');
   }
-
 
   public confirmSell() {
     var request = new XMLHttpRequest();
+    var successAlert = document.getElementById('successAlert');
 
     request.open('POST', this.apiSell);
     request.setRequestHeader("Content-Type", "application/json");
@@ -178,7 +182,7 @@ export class StockComponent implements OnInit {
       }
     }
 
-    request.send(JSON.stringify({'ticker' : this.stockSymbol, 'numShares': this.sellQuantity}));
+    request.send(JSON.stringify({ 'ticker': this.stockSymbol, 'numShares': this.sellQuantity }));
 
     request.open('PUT', this.apiModifyPortfolio);
     request.setRequestHeader("Content-Type", "application/json");
@@ -193,8 +197,21 @@ export class StockComponent implements OnInit {
     request.send(JSON.stringify({ 'pid': this.portfolioId, 'aid': this.assetId, 'shares': -Math.abs(this.sellQuantity), 'total_cost': this.sellPrice }));
     let response = JSON.parse(this.request.responseText);
     console.log(response)
+    successAlert!.classList.add('show');
+    successAlert!.classList.remove('invisible');
+  
+  }
 
+  hideSuccessAlert() {
+    let successAlert = document.getElementById('successAlert');
+    successAlert!.classList.add('invisible');
+    successAlert!.classList.remove('show');
+  }
 
+  hideFailureAlert() {
+    let failureAlert = document.getElementById('failureAlert');
+    failureAlert!.classList.add('invisible');
+    failureAlert!.classList.remove('show');
   }
 
   public chartType: ChartType = 'line';
@@ -226,7 +243,7 @@ export class StockComponent implements OnInit {
           labelString: 'VALUE ($)',
           fontColor: "#fff",
           fontSize: 18,
-          fontFamily: "Manrope",
+          fontFamily: "Poppins",
         },
         gridLines: {
           color: "#222"
@@ -238,7 +255,7 @@ export class StockComponent implements OnInit {
           labelString: 'MONTH',
           fontColor: "#fff",
           fontSize: 18,
-          fontFamily: "Manrope",
+          fontFamily: "Poppins",
         },
         gridLines: {
           color: "#222"
@@ -250,7 +267,7 @@ export class StockComponent implements OnInit {
       text: 'HISTORICAL STOCK PRICE',
       fontColor: "#fff",
       fontSize: 25,
-      fontFamily: "Manrope",
+      fontFamily: "Poppins",
     },
   };
 

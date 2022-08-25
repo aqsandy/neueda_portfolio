@@ -11,7 +11,6 @@
         <thead class="thead-dark">
           <tr>
             <th scope="col">Order ID</th>
-            <th scope="col">Type</th>
             <th scope="col">Ticker</th>
             <th scope="col">Shares</th>
             <th scope="col">Net Amount</th>
@@ -23,12 +22,14 @@
         <tbody>
           <tr *ngFor = "let order of orders;" class='clickable-row'>
             <td>{{order[0]}}</td>
-            <td>{{order[1]}}</td>
-            <td>{{order[2]}}</td>
+            <td style="font-weight: 600;">{{order[2]}}</td>
             <td>{{order[3]}}</td> 
             <td>{{order[4]}}</td>
-            <td>{{order[5]}}</td>
-            <td>{{order[6]}}</td>
+            <td *ngIf="order[5]=='BUY'" class="green-txt-dark">{{order[5]}}</td>
+            <td *ngIf="order[5]=='SELL'" class="red-txt-dark">{{order[5]}}</td>
+            <td *ngIf="order[6]=='IN PROGRESS'" style="font-weight: 600;">{{order[6]}}</td>
+            <td *ngIf="order[6]=='COMPLETED'" class="green-txt-dark">{{order[6]}}</td>
+            <td *ngIf="order[6]=='FAILED'" class="red-txt-dark">{{order[6]}}</td>
             <td>{{order[7]}}</td>
           </tr>
         </tbody>

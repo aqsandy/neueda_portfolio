@@ -1,21 +1,21 @@
 <div class="container-fluid main">
 <div class="content" role="main">
     <div class="container-fluid w-100">
-        <div id="buySuccessAlert"
+        <div id="successAlert"
             class="alert alert-success alert-dismissible d-flex align-items-center fade invisible">
             <i class="fa fa-check-circle" aria-hidden="true"></i>
-            <strong class="mx-2">Success!</strong> Your purchase was successful. Click <a href="/history">here</a> to view the
+            <strong class="mx-2">Success!</strong> Your transaction was successful. Click <a href="/history">&nbsp;here&nbsp;</a> to view the
             transaction.
-            <button type="button" id="closeBuySuccess" class="btn-close float-right" data-dismiss="alert"><i
+            <button type="button" id="closeSuccessAlert" class="btn-close float-right" (click)="hideSuccessAlert()" data-dismiss="alert"><i
                     class="fa fa-times text-right" aria-hidden="true"></i></button>
         </div>
 
-        <div id="sellSuccessAlert"
-            class="alert alert-success alert-bg alert-dismissible d-flex align-items-center fade invisible">
+        <div id="failureAlert"
+            class="alert alert-danger alert-bg alert-dismissible d-flex align-items-center fade invisible">
             <i class="fa fa-check-circle" aria-hidden="true"></i>
-            <strong class="mx-2">Success!</strong> Your sale was successful. Click <a href="/history">here</a> to view the
+            <strong class="mx-2">Success!</strong> Your transaction was unsuccessful. Click <a href="/history">&nbsp;here&nbsp;</a> to view the
             transaction.
-            <button type="button" id="closeSellSuccess" class="btn-close text-right" data-dismiss="alert"><i
+            <button type="button" id="closeFailureAlert" (click)="hideFailureAlert()" class="btn-close text-right" data-dismiss="alert"><i
                     class="fa fa-times text-right" aria-hidden="true"></i></button>
         </div>
         <div class="row header pt-0 border-bottom">
