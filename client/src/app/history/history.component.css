@@ -1,0 +1,25 @@
+thead th {
+    background-color: #202027;
+    border-color: #202027;
+}
+
+tr td, tbody th{
+    background-color: white;
+    color: #070A1B;
+}
+
+h2 {
+    background-color: #070A1B;
+}
+
+.container-fluid {
+    padding-left: 10vw;
+    padding-right: 10vw;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+}
+
+h2 {
+    background-color: #070A1B;
+    padding-top: 25px;
+}

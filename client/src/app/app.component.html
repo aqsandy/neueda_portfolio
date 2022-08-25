@@ -1,0 +1,56 @@
+<div class="content">
+    <div class="row row-0 toolbar">
+        <div class="col-12">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand ml-2" href="#">ICGTrader</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class=" navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page"
+                                class="nav-link" href="">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/my-portfolio">Portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="/history" routerLinkActive="active" ariaCurrentWhenActive="page"
+                                class="nav-link" href="/history">History</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline mr-auto w-25">
+                        <input class="form-control" type="search" placeholder="Search by symbol" aria-label="Search"
+                            id="navSearch"> &nbsp;&nbsp;
+                        <button type="button" class="btn btn-search" (click)="getSearchResults()">Search</button>
+                    </form>
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <span>
+                                <p class="username mt-2 mb-0">Chris Miss</p>
+                                <br>
+                                <p class="useremail mb-2">chris.miss2@gmail.com</p>
+                            </span>
+                        </li>
+                        <li class="nav-item">
+                            <p class="my-2 ml-2" style="display:inline-block;"><span><i
+                                        class="fa fa-user-circle fa-3x"></i></span></p>
+                        </li>
+                    </ul>
+                </div>
+        </nav>
+    </div>
+    <div class="col-2 toolbar-user">
+
+    </div>
+    <div class="col-1">
+
+    </div>
+</div>
+<hr>
+<!-- <div class="container-fluid main"> -->
+    <router-outlet></router-outlet>
+<!-- </div> -->

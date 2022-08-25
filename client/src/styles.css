@@ -1,0 +1,115 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    background-color: #141829;
+    color: white;
+}
+
+body, html {
+    margin: 0 !important;
+    background-color: #141829 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 10px 10px;
+}
+
+hr {
+    border: 0;
+    clear:both;
+    display:block;
+    background-color:#292e4b;
+    height: 2px;
+    margin: 0;
+}
+
+.toolbar {
+    margin: 5px 75px 5px 75px;
+    
+}
+
+.main {
+    padding: 20px 75px 10px 75px;
+}
+
+
+.logo {
+    font-weight: 700;
+}
+
+.navbar {
+    background-color: #141829; 
+    color: white;
+    font-weight: bold;
+}
+
+.navbar-brand {
+    color: white;
+    font-weight: 500;
+    font-size: x-large;
+    margin-right: 25px;
+}
+
+nav .navbar-nav{
+    font-weight: 900;
+}
+
+nav .navbar-nav .active a{
+    color: white;
+}
+
+nav .navbar-nav li a{
+    font-weight: 500;
+    color: #6C6E79;
+    margin: 0px 30px 0px 30px;
+}
+
+nav .navbar-toggler-icon {
+    outline: none !important;
+}
+
+input.form-control { 
+    width: 20vw; 
+    flex-grow: 1;
+}
+
+.username {
+    float: right;
+}
+
+.useremail {
+    font-weight: 300;
+}
+
+.custom-bg-dark {
+    background-color: #070A1B;
+}
+
+.btn-buy {
+    background-color: #68F3A9;
+    border-color: #68F3A9;
+    color: #141829;
+    font-weight: bolder;
+}
+
+.btn-sell {
+    background-color: #F26967;
+    border-color: #F26967;
+    color: #141829;
+    font-weight: bolder;
+}
+
+.fit-width {
+    width: fit-content;
+}
+
+.btn-search {
+    background-color: #68F3A9;
+    border-color: #68F3A9;
+    color: #141829;
+}
+

@@ -1,0 +1,39 @@
+.container-fluid {
+    padding-left: 10vw;
+    padding-right: 10vw;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+}
+
+h4 {
+    padding-bottom: 1em;
+}
+
+
+h2 {
+    background-color: #070A1B;
+    padding-top: 25px;
+}
+
+.cards{
+    padding: 2vw;
+}
+
+.card {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form {
+    width: 20vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form, h2, h4, p {
+    background-color: #070A1B;
+}
+
+.content, .form-group, .card, .cards, .label {
+    background-color: #070A1B;
+}

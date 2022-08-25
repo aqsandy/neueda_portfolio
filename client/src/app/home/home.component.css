@@ -1,0 +1,18 @@
+#home-bg {  
+    color: #fff;
+    background: linear-gradient(rgba(11, 10, 19, 0.7), rgba(11, 10, 19, 0.7)), url('/assets/home-bg.jpg');
+    /* background-image: url("/assets/home-bg.jpg");  
+    background-color: rgba(0, 0, 0, 0.1); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 60vh;
+}
+
+.no-bg {
+    background-color: transparent !important;
+}
+
+* {
+    background-color: transparent;
+}

@@ -1,0 +1,213 @@
+<div class="container-fluid main custom-bg-light">
+<div class="container-fluid px-4 custom-bg-light">
+    <div class="row gx-5 custom-bg-light">
+        <div class="col-3 custom-bg-light px-2">
+            <div class="col custom-bg-dark">
+                <h6 class="col-header custom-bg-dark mx-0">
+                    NET WORTH
+                </h6>
+                <h1 class="custom-bg-dark mx-0">$816,754</h1>
+                <br>
+                <p class="my-1 mx-1 custom-bg-dark">Assets</p>
+                <div class="progress" style="height: 3px;">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <br>
+                <p class="my-1 mx-1 custom-bg-dark">Liabilities</p>
+                <div class="progress" style="height: 3px;">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="50"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+
+                <div class="panel-group" id="accordion">
+                    <!-- First Panel -->
+                    <div class="panel panel-default mt-5 pb-0">
+                        <div class="panel-heading ">
+                            <h4 class="panel-title" data-toggle="collapse" data-target="#collapseOne">CASH</h4>
+                        </div>
+                        <hr class="mx-0" style="height: 1px;">
+                        <div id="collapseOne" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="row mx-1 my-2">
+                                    <div class="col-9 px-0">
+                                        <p class="list-item">Fidelity Cash</p>
+                                        <p class="sublist-item">Cash Management</p>
+                                    </div>
+                                    <div class="col-3">
+                                        <p class="list-item">2.17%</p>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="panel-body">
+                                <div class="row mx-1 my-2">
+                                    <div class="col-9 px-0">
+                                        <p class="list-item">Wells Fargo</p>
+                                        <p class="sublist-item">Checking</p>
+                                    </div>
+                                    <div class="col-3">
+                                        <p class="list-item">1.44%</p>
+                                    </div>
+                                </div>
+                                </div>
+                                <hr class="mx-1 grey-hr">
+                                <div class="panel-body">
+                                <div class="row mx-1 my-2">
+                                    <div class="col-9 px-0">
+                                        <p class="list-item">Wells Fargo</p>
+                                        <p class="sublist-item">Savings</p>
+                                    </div>
+                                    <div class="col-3">
+                                        <p class="list-item">1.23%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Second Panel -->
+                    <div class="panel panel-default pb-3">
+                        <div class="panel-heading">
+                            <h4 class="panel-title" data-toggle="collapse" data-target="#collapseTwo">INVESTMENTS</h4>
+                        </div>
+                        <hr class="mx-0" style="height: 1px;">
+                        <div id="collapseTwo" class="panel-collapse collapse">
+                            <div *ngFor="let portfolioAsset of portfolioAssets" class="panel-body">
+                                <div class="row mx-1 my-2">
+                                    <div class="col-9 px-0">
+                                        <p class="list-item"><a style="cursor: pointer;" (click)="routeToAsset(portfolioAsset[1])">{{portfolioAsset[0]}}</a></p>
+                                        <p class="sublist-item">{{portfolioAsset[1]}}</p>
+                                    </div>
+                                    <div class="col-3 text-right pr-2">
+                                        <p class="list-item">{{portfolioAsset[3]}}</p>
+                                        <p class="sublist-item">SHARES</p>
+                                    </div>
+                                </div>
+                                <hr class="mx-1 grey-hr">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 custom-bg-light px-2">
+            <div class="col mt-2 custom-bg-dark">
+                <h5 class="col-header custom-bg-dark" style="display:inline-block">
+                    NET WORTH
+                </h5>
+                <h5 class="col-header custom-bg-dark float-right" style="display:inline-block">
+                    $816,754
+                </h5>
+                <hr class="mx-2" style="height: 1px;">
+                <p class="custom-bg-dark py-2 px-3 subhead" style="display:inline-block">
+                    LAST 30 DAYS&nbsp;
+                </p>
+                <p class="green-txt custom-bg-dark" style="display:inline-block">
+                    $138,604
+                </p>
+                <p class="green-txt custom-bg-dark float-right py-2 px-3" style="display:inline-block">
+                    $3,402
+                </p>
+                <p class="custom-bg-dark float-right py-2 px-3 subhead" style="display:inline-block">
+                    TODAY'S CHANGE &nbsp;
+                </p>
+                <div class="row chart-wrapper my-2 mx-2">
+                    <canvas baseChart height="225" [datasets]="lineChartData" [labels]="lineChartLabels"
+                        [options]="lineChartOptions" [colors]="lineChartColors" [legend]="chartLegend"
+                        [chartType]="lineChartType" [plugins]="lineChartPlugins" class="px-2 py-2">
+                    </canvas>
+                </div>
+                <h5 class="col-header custom-bg-dark" style="display:inline-block">
+                    CASH FLOW
+                </h5>
+                <h5 class="col-header custom-bg-dark float-right" style="display:inline-block">
+                    $6,882
+                </h5>
+                <hr class="mx-2" style="height: 1px;">
+                <p class="custom-bg-dark py-2 px-3 subhead mb-0" style="display:inline-block">
+                    LAST 90 DAYS&nbsp;
+                </p>
+                <div class="row chart-wrapper pb-4">
+                    <div class="col-6">
+                        <h6 class="text-center">INCOME</h6>
+                        <p class="text-center">$30, 716</p>
+                        <canvas baseChart height="200" [data]="incomeChartData" [legend]="chartLegend" [labels]="incomeChartLabels"
+                            [chartType]="doughnutChartType" class="px-2 pb-2">
+                        </canvas>
+                    </div>
+                    <div class="col-6">
+                        <h6 class="text-center">SPENDING</h6>
+                        <p class="text-center">-$23,834</p>
+                        <canvas baseChart height="200" [data]="spendingChartData" [legend]="chartLegend" [labels]="spendingChartLabels"
+                            [chartType]="doughnutChartType" class="px-2 pb-2">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 custom-bg-light">
+            <div class="col mt-2 custom-bg-dark">
+                <h5 class="col-header custom-bg-dark" style="display:inline-block">
+                    MARKET MOVERS
+                </h5>
+                
+                <h5 class="col-header custom-bg-dark float-right" style="display:inline-block">
+
+                </h5>
+                
+                <h6>YOUR GAINERS</h6>
+                <hr class="mx-2" style="height: 1px;">
+                <div class="row mx-1 my-2">
+                    <div class="col-9 px-2">
+                        <p>Apple Inc</p>
+                        <p>Tesla Inc</p>
+                        <p>Alphabet Inc</p>
+                    </div>
+                    <div class="col-3 pr-0">
+                        <p class="green-txt">2.53%</p>
+                        <p class="green-txt">1.66%</p>
+                        <p class="green-txt">0.95%</p>
+                    </div>
+                </div>
+                
+                <h6>YOUR LOSERS</h6>
+                <hr class="mx-2" style="height: 1px;">
+                
+                <div class="row mx-1 my-2">
+                    <div class="col-9 px-2">
+                        <p>Peloton Int.</p>
+                        <p>Splunk Inc</p>
+                        <p>Dollar Tree</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="red-txt">-7.19%</p>
+                        <p class="red-txt">-3.87%</p>
+                        <p class="red-txt">-2.99%</p>
+                    </div>
+                </div>
+                <h5 class="col-header custom-bg-dark" style="display:inline-block">
+                    MARKET ADVICE
+                </h5>
+                <hr class="mx-1 grey-hr">
+                <div *ngFor="let portfolioAsset of portfolioAssets" class="panel-body m-2 pb-1" id="market-advice">
+                    <div class="row mx-1 my-2">
+                        <div class="col-9 px-0">
+                            <p class="list-item" style="font-weight: 500">{{portfolioAsset[0]}}</p>
+                            <p class="sublist-item" style="color: rgb(199, 199, 199);">{{portfolioAsset[1]}}</p>
+                        </div>
+                        <div class="col-3">
+                            <p *ngIf="portfolioAsset[4]=='Hold'" class="list-item">{{portfolioAsset[4]}}</p>
+                            <p *ngIf="portfolioAsset[4]=='Sell'" class="list-item red-txt">{{portfolioAsset[4]}}</p>
+                            <p *ngIf="portfolioAsset[4]=='Buy'" class="list-item green-txt">{{portfolioAsset[4]}}</p>
+                        </div>
+                    </div>
+                    <hr class="mx-1 grey-hr">
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
