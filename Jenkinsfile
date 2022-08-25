@@ -18,8 +18,8 @@ pipeline{
                 sh "oc login https://localhost:8443 --username admin --password admin --insecure-skip-tls-verify=true"
                 sh "oc project ${projectName} || oc new-project ${projectName}"
                 sh "oc delete all --selector app=${projectName} || echo 'Unable to delete all previous openshift resources'"
-                sh "oc new-app ${dockerImageTag} -l version=${version}"
-                sh "oc new-app ${dockerImageTagFront} -l version=${version}"
+                sh "oc new-app ${dockerImageTag}"
+                sh "oc new-app ${dockerImageTagFront}"
                 sh "oc new-app callalyf/dummy-order-filler -l version=0.0.1"
                 sh "oc expose svc/${projectName}"
             }
