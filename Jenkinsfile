@@ -7,6 +7,13 @@ def dockerImageTagFront = "${projectNameFront}:${version}"
 pipeline{
     agent any
     stages{
+        stage('Clean up docker images'){
+            steps{
+                sh 'docker stop $(docker ps -q)'
+                sh 'docker rm $(docker ps -a -q)'
+                sh 'docker rmi $(docker images -q -f dangling=true)'
+            }
+        }
         stage('Build Docker Containers') {
             steps {
                 sh "docker build -t ${dockerImageTag} ./server_new"
