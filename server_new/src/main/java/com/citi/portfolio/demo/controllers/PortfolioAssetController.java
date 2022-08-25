@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @RestController
@@ -33,13 +34,15 @@ public class PortfolioAssetController {
                 }else{
                     portfolioAssetRepository.delete(target_asset);
                 }
-            }else {
+                }
+            }catch(NoSuchElementException e){
                 portfolioAssetRepository.save(asset);
+                return ResponseHandler.generateResponse("Add the asset in portfolio successfully.", HttpStatus.OK, null);
             }
-            }catch(Exception e){
+            catch(Exception e){
                 return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
             }
-            return ResponseHandler.generateResponse("Added the asset in portfolio successfully.", HttpStatus.OK, null);
+            return ResponseHandler.generateResponse("Modify the asset in portfolio successfully.", HttpStatus.OK, null);
         }
     @GetMapping(path="/all")
     ResponseEntity<Object>  getAllAssets() {
