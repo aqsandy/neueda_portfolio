@@ -9,7 +9,7 @@ pipeline{
     stages{
         stage('Clean up docker images'){
             steps{
-                sh 'docker rm $(docker ps -f "status=exited" -q)'
+                sh 'docker rm $(docker ps --filter status=exited -q)'
             }
         }
         stage('Build Docker Containers') {
