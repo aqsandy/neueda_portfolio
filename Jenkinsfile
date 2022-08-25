@@ -9,9 +9,7 @@ pipeline{
     stages{
         stage('Clean up docker images'){
             steps{
-                sh 'docker stop $(docker ps -q)'
-                sh 'docker rm $(docker ps -a -q)'
-                sh 'docker rmi $(docker images -q -f dangling=true)'
+                sh 'docker rm $(docker ps -f "status=exited" -q)'
             }
         }
         stage('Build Docker Containers') {
