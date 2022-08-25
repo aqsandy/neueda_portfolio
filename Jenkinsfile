@@ -9,7 +9,7 @@ pipeline{
     stages{
         stage('Clean up docker images'){
             steps{
-                sh 'sudo docker rm $(docker ps --filter status=exited -q) || echo "no docker image needs to remove"'
+                sh 'sudo docker rm \$(docker ps --filter status=exited -q) || echo "no docker image needs to remove"'
             }
         }
         stage('Pull dummy trader'){
