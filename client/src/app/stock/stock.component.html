@@ -1,0 +1,208 @@
+<div class="container-fluid main">
+<div class="content" role="main">
+    <div class="container-fluid w-100">
+        <div id="buySuccessAlert"
+            class="alert alert-success alert-dismissible d-flex align-items-center fade invisible">
+            <i class="fa fa-check-circle" aria-hidden="true"></i>
+            <strong class="mx-2">Success!</strong> Your purchase was successful. Click <a href="/history">here</a> to view the
+            transaction.
+            <button type="button" id="closeBuySuccess" class="btn-close float-right" data-dismiss="alert"><i
+                    class="fa fa-times text-right" aria-hidden="true"></i></button>
+        </div>
+
+        <div id="sellSuccessAlert"
+            class="alert alert-success alert-bg alert-dismissible d-flex align-items-center fade invisible">
+            <i class="fa fa-check-circle" aria-hidden="true"></i>
+            <strong class="mx-2">Success!</strong> Your sale was successful. Click <a href="/history">here</a> to view the
+            transaction.
+            <button type="button" id="closeSellSuccess" class="btn-close text-right" data-dismiss="alert"><i
+                    class="fa fa-times text-right" aria-hidden="true"></i></button>
+        </div>
+        <div class="row header pt-0 border-bottom">
+            <div class="col-8">
+                <span class="stock-symbol">{{stockSymbol}}</span>&nbsp;&nbsp;<span
+                    class="stock-name">{{stockName}}</span>
+            </div>
+            <div class="col-4 text-right">
+                <br>
+                <span class="">
+                    <h5 style="display: inline;">CURRENT TRADE ADVICE:
+                        <h5 style="display: inline;" *ngIf="tradeAdvice=='Hold'"> {{ tradeAdvice }} </h5>
+                        <h5 style="display: inline;" *ngIf="tradeAdvice=='Sell'" class="red-txt"> {{ tradeAdvice }} </h5>
+                        <h5 style="display: inline;" *ngIf="tradeAdvice=='Buy'" class="green-txt"> {{ tradeAdvice }} </h5>
+                    </h5>
+                </span>
+            </div>
+        </div>
+        <hr class="section-divider">
+        <div class="row">
+            <div class="col-8">
+                <div style="display: block" ng-app>
+                    <canvas baseChart id="stock-history-chart" [chartType]="chartType" [datasets]="chartDatasets"
+                        [labels]="chartLabels" [colors]="chartColors" [options]="chartOptions" [legend]="true"
+                        (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+                    </canvas>
+                </div>
+                <div class="row">
+                    <div class="col text-center" *ngIf="isLoaded">
+                        <span class="durations">
+                            <a [ngStyle]="{'color': hourLinkColour}" style="pointer-events: none">1H</a>&nbsp;&nbsp;
+                            <a [ngStyle]="{'color': dayLinkColour}" style="pointer-events: none">1D</a>&nbsp;&nbsp;
+                            <a [ngStyle]="{'color': weekLinkColour}" (click)="onClickWeek()">1W</a>&nbsp;&nbsp;
+                            <a [ngStyle]="{'color': monthLinkColour}" (click)="onClickMonth()">1M</a></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col border-left">
+                <br>
+                <span class="overview-header">
+                    OVERVIEW
+                </span>
+                <div class="overview-content">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="stat-title">CURRENT PRICE</div>
+                            <div class="stat-value">${{ currentPrice }}</div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-title">PRICE CHANGE</div>
+                            <div class="stat-value">${{ priceChange }}</div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="stat-title">MARKET CAP</div>
+                            <div class="stat-value">{{ marketValue }}M</div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-title">PERCENT CHANGE</div>
+                            <div class="stat-value">{{ percentageChange }}%</div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="stat-title">DAY HIGH</div>
+                            <div class="stat-value">${{ dayHigh }}</div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-title">DAY LOW</div>
+                            <div class="stat-value">${{ dayLow }}</div>
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="stat-title">OPENING PRICE</div>
+                            <div class="stat-value">${{ openingPrice }}</div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-title">PREV CLOSING PRICE</div>
+                            <div class="stat-value">${{ previousClosingPrice }}</div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="row">
+                        <div class="col-6">
+                            <button type="button" class="btn btn-buy btn-primary w-75" data-toggle="modal"
+                                data-target="#modal-buy">
+                                BUY
+                            </button>
+                        </div>
+                        <div class="col-6">
+                            <button type="button" class="btn btn-sell btn-primary w-75" data-toggle="modal"
+                                data-target="#modal-sell">
+                                SELL
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="modal-buy" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">BUY STOCK</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true"
+                                            style="background-color:white; color: #141829;">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group w-100">
+                                            <label for="buy-symbol">Stock</label>
+                                            <input type="text" class="form-control" id="buy-symbol"
+                                                placeholder="Stock symbol" [value]="stockSymbol" disabled="true">
+                                        </div>
+                                        <div class="form-group w-100">
+                                            <label for="sell-symbol">Value</label>
+                                            <input type="text" class="form-control" placeholder="Stock price"
+                                                [value]="currentPrice" disabled="true">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sell-quantity">Quantity</label>
+                                            <input type="number" min="0" class="form-control" [(ngModel)]="buyQuantity"
+                                                (ngModelChange)="onBuyQuantityChange($event)" name="buy-quantity"
+                                                id="buy-quantity" placeholder="Number of shares to be bought">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <span class="mr-auto ml-3" style="color:#141829; background-color: white">COST: ${{
+                                        buyCost }}</span>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">CANCEL</button>
+                                    <button type="button" class="btn btn-success" data-dismiss="modal"
+                                        id="confirmBuyBtn" (click)="confirmBuy()">CONFIRM</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="modal-sell" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">SELL STOCK</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true"
+                                            style="background-color:white; color: #141829;">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group w-100">
+                                            <label for="sell-symbol">Stock</label>
+                                            <input type="text" class="form-control" id="sell-symbol"
+                                                placeholder="Stock symbol" [value]="stockSymbol" disabled="true">
+                                        </div>
+                                        <div class="form-group w-100">
+                                            <label for="sell-symbol">Value</label>
+                                            <input type="text" class="form-control" placeholder="Stock price"
+                                                [value]="currentPrice" disabled="true">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sell-quantity">Quantity</label>
+                                            <input type="number" min="0" class="form-control" [(ngModel)]="sellQuantity"
+                                                (ngModelChange)="onSellQuantityChange($event)" name="sell-quantity"
+                                                id="sell-quantity" placeholder="Number of shares to be sold">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <span class="mr-auto ml-3" style="color:#141829; background-color: white">PRICE: ${{
+                                        sellPrice }}</span>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">CANCEL</button>
+                                    <button type="button" id="confirmSellBtn" data-dismiss="modal"
+                                        class="btn btn-success" (click)="confirmSell()">CONFIRM</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

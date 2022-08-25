@@ -1,0 +1,53 @@
+<div class="container-fluid">
+  <div class="row header">
+    <div class="col-8 custom-bg-dark">
+      <h2>Market</h2>
+    </div>
+    <div class="col-3 custom-bg-dark pr-0">
+      <p style="padding-top: 15px; margin: 10px; display:inline-block">
+        THE MARKETS ARE CURRENTLY {{marketStatus}}
+      </p>
+    </div>
+    <div class="col-1 custom-bg-dark pl-0">
+      <p style="padding-top: 20px; margin: 10px; display:inline-block">
+        <i class="fa fa-sun-o fa-2x custom-bg-dark"></i>
+      </p>
+    </div>
+  </div>
+  <hr class="mx-2" style="height: 1px;" style="background-color:white">
+  <div class="row content">
+    <div class="col-6 text-center cards">
+      <div class="col card">
+        <h4>BUY ASSET(S)</h4>
+        <form class="text-center">
+          <div class="form-group">
+            <label for="stockToBuy">Symbol</label>
+            <input type="text" class="form-control" id="stockToBuy" placeholder="e.g., APPL">
+          </div>
+          <div class="form-group">
+            <label for="quantityStockToBuy">Quantity</label>
+            <input type="text" class="form-control" id="quantityStockToBuy" placeholder="Number of shares to be bought">
+          </div>
+          <button type="submit" class="btn btn-primary btn-buy" (click)="buyAsset()">BUY</button>
+        </form>
+      </div>
+    </div>
+    <div class="col-6 text-center cards">
+      <div class="col card">
+        <h4>SELL ASSET(S)</h4>
+        <form class="text-center">
+          <div class="form-group">
+            <label for="stockToBuy">Symbol</label>
+            <input type="text" class="form-control" id="stockToSell" placeholder="e.g., APPL">
+          </div>
+          <div class="form-group">
+            <label for="quantityStockToBuy">Quantity</label>
+            <input type="text" class="form-control" id="quantityStockToBuy" placeholder="Number of shares to be sold">
+          </div>
+          <button type="submit" class="btn btn-primary btn-sell" (click)="sellAsset()">SELL</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
