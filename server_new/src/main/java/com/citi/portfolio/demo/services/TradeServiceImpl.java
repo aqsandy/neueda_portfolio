@@ -105,7 +105,7 @@ public class TradeServiceImpl implements TradeService {
             }
             else if(temp.getStatus_code() == 2)
             {
-                temp.setOrderStatus("SUCCESSFUL");
+                temp.setOrderStatus("COMPLETED");
                 tradeRepository.save(temp);
             }
         }
