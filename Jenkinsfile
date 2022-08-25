@@ -7,21 +7,19 @@ pipeline{
     stages{
         stage('Test') {
             steps {
-                cd './server_new'
-                sh 'chmod a+x mvnw'
-                sh './mvnw clean test'
+                sh 'chmod a+x ./server_new/mvnw'
+                sh './server_new/mvnw clean test'
             }
         }
 
         stage('Build') {
             steps {
-                sh './mvnw package'
+                sh './server_new/mvnw package'
             }
         }
 
         stage('Build Container') {
             steps {
-                cd '..'
                 sh "docker-compose build"
             }
         }
