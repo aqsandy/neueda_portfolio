@@ -6,7 +6,7 @@ pipeline{
     agent any
     stages{
         stage('Test') {
-            steps {
+            steps { 
                 sh 'chmod a+x ./server_new/mvnw'
                 sh './server_new/mvnw clean test'
             }
