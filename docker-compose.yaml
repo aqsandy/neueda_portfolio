@@ -23,6 +23,6 @@ services:
     environment:
       - DB_NAME=portfolio_DB
       - DB_TABLE=order_history
-      - DB_HOST=100.42.100.42.65.208
+      - DB_HOST=100.42.65.208
       - DB_USER=root
       - DB_PASS=4Dw2^rt2YCe
