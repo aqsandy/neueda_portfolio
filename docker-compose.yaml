@@ -1,16 +1,13 @@
 version: "3.7"
 
 services:
-  # mysql:
-  #     image: mariadb
-  #     restart: always
-  #     environment:
-  #       MYSQL_ROOT_PASSWORD: c0nygre
-  #       MYSQL_DATABASE: portfolio_DB
-  #     expose:
-  #       - "3306"
-  #     ports:
-  #       - "3306:3306"
+  portfolio_front:
+    build:
+      context: ./client
+    ports:
+     - "4200:4200"
+    stdin_open: true
+    tty: true
   portfolio_backend:
     build: 
       context: ./server_new

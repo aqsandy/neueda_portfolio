@@ -1,23 +1,27 @@
-def projectName = 'portfolio_management'
+def projectName = 'portfolio-management'
+def projectNameFront = 'portfolio-management-front-end'
 def version = "0.0.${currentBuild.number}"
 def dockerImageTag = "${projectName}:${version}"
+def dockerImageTagFront = "${projectNameFront}:${version}"
 
 pipeline{
     agent any
     stages{
-        stage('Build Container') {
+        stage('Build Docker Containers') {
             steps {
-                sh "docker-compose build"
+                sh "docker build -t ${dockerImageTag} ./server_new"
+                sh "docker build -t ${dockerImageTagFront} ./client"
             }
         }
-        // stage('Deploy Containers to Openshift'){
-        //     steps{
-        //         sh "oc login https://localhost:8443 --username admin --password admin --insecure-skip-tls-verify=true"
-        //         sh "oc project ${projectName} || oc new-project ${projectName}"
-        //         sh "oc delete all --selector app=${projectName} || echo 'Unable to delete all previous openshift resources'"
-        //         sh "oc new-app ${dockerImageTag} -l version=${version}"
-        //         sh "oc expose svc/${projectName}"
-        //     }
-        // }
+        stage('Deploy Containers to Openshift'){
+            steps{
+                sh "oc login https://localhost:8443 --username admin --password admin --insecure-skip-tls-verify=true"
+                sh "oc project ${projectName} || oc new-project ${projectName}"
+                sh "oc delete all --selector app=${projectName} || echo 'Unable to delete all previous openshift resources'"
+                sh "oc new-app ${dockerImageTag} -l version=${version}"
+                sh "oc new-app ${dockerImageTagFront} -l version=${version}"
+                sh "oc expose svc/${projectName}"
+            }
+        }
     }
 }
