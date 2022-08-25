@@ -70,7 +70,7 @@ public class TradeController {
     }
 
 
-    @PutMapping(value = "/update")
+    @RequestMapping(method= RequestMethod.PUT, value = "/update")
         public ResponseEntity<String> updateOrderHistory()
         {
             try {
@@ -80,7 +80,7 @@ public class TradeController {
                 return trades_successfully_updated;
             }
             catch (Exception e){
-                return new ResponseEntity<>("Trades didn't update sucesfully", HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 
         }
 
