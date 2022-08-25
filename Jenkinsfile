@@ -5,12 +5,6 @@ def dockerImageTag = "${projectName}:${version}"
 pipeline{
     agent any
     stages{
-        stage('Build') {
-            steps {
-                sh './server_new/mvnw package'
-            }
-        }
-
         stage('Build Container') {
             steps {
                 sh "docker-compose build"
