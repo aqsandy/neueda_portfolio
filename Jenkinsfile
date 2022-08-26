@@ -14,7 +14,7 @@ pipeline{
         }
         stage('Pull dummy trader'){
             steps{
-                sh "sudo docker pull callalyf/dummy-order-filler"
+                sh "docker pull callalyf/dummy-order-filler"
             }
         }
         stage('Build Docker Containers') {
