@@ -28,6 +28,7 @@ pipeline{
                 sh "oc login https://localhost:8443 --username admin --password admin --insecure-skip-tls-verify=true"
                 sh "oc project ${projectName} || oc new-project ${projectName}"
                 sh "oc delete all --selector app=${projectName} || echo 'Unable to delete all previous openshift resources'"
+                sh "oc delete all --selector app=${projectNameFront} || echo 'Unable to delete all previous openshift resources'"
                 sh "oc new-app ${dockerImageTag}"
                 sh "oc new-app ${dockerImageTagFront}"
                 sh "oc new-app callalyf/dummy-order-filler -l version=0.0.1 -e DB_NAME=portfolio_DB -e DB_TABLE=order_history -e DB_HOST=100.42.65.208 -e DB_PORT=8380 -e DB_USER=dummy_trade -e DB_PASS=123456"
